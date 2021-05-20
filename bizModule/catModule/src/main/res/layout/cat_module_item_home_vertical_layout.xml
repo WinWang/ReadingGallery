@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250pt"
+    android:paddingHorizontal="30pt"
+    tools:viewBindingIgnore="true">
+
+    <ImageView
+        android:id="@+id/iv_cover_home_vertical"
+        android:layout_width="150pt"
+        android:layout_height="200pt"
+        android:scaleType="centerCrop"
+        android:src="#efefef"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_status_home_vertical"
+        android:layout_width="150pt"
+        android:layout_height="40pt"
+        android:background="@color/home_color_64_666"
+        android:gravity="center"
+        android:text="哈哈"
+        android:textColor="@color/white"
+        android:textSize="24pt"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintEnd_toEndOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintStart_toStartOf="@+id/iv_cover_home_vertical" />
+
+    <TextView
+        android:id="@+id/tv_title_home_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15pt"
+        android:text="纵使相逢不相识"
+        android:textColor="@color/home_color_333"
+        android:textSize="28pt"
+        app:layout_constraintStart_toEndOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintTop_toTopOf="@+id/iv_cover_home_vertical" />
+
+    <TextView
+        android:id="@+id/tv_desc_home_vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15pt"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="作者:asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"
+        android:textColor="@color/home_color_666"
+        android:textSize="24pt"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintTop_toTopOf="@+id/iv_cover_home_vertical" />
+
+    <TextView
+        android:id="@+id/tv_voice_home_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15pt"
+        android:text="哈哈哈哈"
+        android:textColor="@color/home_color_666"
+        android:textSize="26pt"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintStart_toEndOf="@+id/iv_cover_home_vertical" />
+
+    <TextView
+        android:id="@+id/tv_type_home_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15pt"
+        android:text="玄幻"
+        android:textColor="@color/home_color_666"
+        android:textSize="26pt"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_cover_home_vertical"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:background="@color/home_color_999"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

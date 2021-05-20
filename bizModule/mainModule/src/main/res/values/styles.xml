@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppThemes" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#fff</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--没有选中的样式-->
+    <style name="bottom_normal_text">
+        <item name="android:textColor">@color/_999</item>
+        <item name="android:textSize">26pt</item>
+    </style>
+    <!--选中的样式-->
+    <style name="bottom_selected_text">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">26pt</item>
+    </style>
+
+
+</resources>

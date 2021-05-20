@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.hm.plugin.lifecycle'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+
+    defaultConfig {
+        applicationId "com.winwang.readinggallery"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+//    kapt {
+//        arguments {
+//            // 路由框架译配置
+//            // module名称
+//            arg("AROUTER_MODULE_NAME", project.getName())
+//            // 是否生成路由文档，"enable"：生成文档，其他字符串不生成路由文档
+//            arg("AROUTER_GENERATE_DOC", "enable")
+//        }
+//    }
+}
+
+dependencies {
+
+    implementation project(':commonAppLib')
+    if (!isModule.toBoolean()) {
+        implementation project(':bizModule:mainModule')
+        implementation project(':bizModule:homeModule')
+        implementation project(':bizModule:catModule')
+        implementation project(':bizModule:detailModule')
+    }
+
+}

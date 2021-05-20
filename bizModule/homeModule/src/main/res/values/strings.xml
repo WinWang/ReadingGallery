@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">首页Module</string>
+
+    <string-array name="tabList">
+        <item>最新更新</item>
+        <item>最新连载</item>
+        <item>热门评书</item>
+        <item>热门有声</item>
+    </string-array>
+
+</resources>

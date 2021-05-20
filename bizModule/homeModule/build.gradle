@@ -1,0 +1,82 @@
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    generateStubs = true
+    arguments {
+        // 路由框架译配置
+        arg("AROUTER_MODULE_NAME", project.getName())
+
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        if (isModule.toBoolean()) {
+            applicationId "com.winwang.homemodule"
+        }
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    //databinding启用
+    dataBinding {
+        enabled = true
+    }
+
+    //viewbinding启用
+    viewBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        main {
+            // 独立调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                //集成开发模式下排除debug文件夹中的所有java文件
+                java {
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':commonAppLib')
+    implementation project(path: ':Frame:LibFlycoTabLayout')
+    implementation rootProject.ext.dependencies["pinedSection"]
+    kapt rootProject.ext.dependencies["arouter-compiler"]
+    kapt rootProject.ext.dependencies["applifecycle-compiler"]
+}

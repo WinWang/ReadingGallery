@@ -1,0 +1,44 @@
+<resources>
+
+    <string name="load_failed">加载失败，请点击重试</string>
+    <string name="load_end">没有更多了</string>
+    <string name="loading">正在加载中&#8230;</string>
+    <string name="reload">重新加载</string>
+    <string name="network_not_available">网络似乎除了点问题&#8230;</string>
+    <string name="no_data">没有相关数据</string>
+    <string name="network_connection_failed">网络连接失败</string>
+    <string name="network_request_timeout">网络请求超时</string>
+    <string name="api_data_parse_error">数据解析错误</string>
+    <string name="network_thread_exception">网络请求线程异常</string>
+
+
+    <!--    loadSir网络提示数据-->
+    <string name="empty_tips_null">暂无数据</string>
+    <string name="empty_tips_netword">请检查你的网络连接</string>
+    <string name="empty_tips_btn">重试</string>
+    <string name="no_more_data">没有更多了</string>
+    <string name="activity_empty">Activity(empty)</string>
+    <string name="activity_placeholder">Activity(placeholder)</string>
+    <string name="activity_with_convertor">Activity with Convertor</string>
+    <string name="single_fragment_custom">single Fragment(custom)</string>
+    <string name="multiple_fragment">multiple Fragment</string>
+    <string name="multiple_fragment_viewpager">multiple Fragment+ViewPager</string>
+    <string name="view_timeout">View(timeout)</string>
+    <string name="animat_callback">Animat Callback</string>
+    <string name="keep_title_bar_in_fragment">keep title bar in Fragment</string>
+    <string name="loadsir">LoadSir</string>
+    <string name="success">Success</string>
+    <string name="keep_title_bar">keep title bar</string>
+    <string name="fine_no_data">暂无数据展示</string>
+    <string name="click_me_to_retry">点我重试!</string>
+    <string name="best_practices">best practices</string>
+    <string name="default_loadsir_callback">default LoadSir Callback</string>
+    <string name="keep_title_bar_in_activity">keep title bar in Activity</string>
+
+    <string name="home_tab">首页</string>
+    <string name="type_tab">分类</string>
+    <string name="live_tab">直播</string>
+    <string name="my_tab">我的</string>
+
+
+</resources>

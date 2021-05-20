@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/fake_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0pt"
+            android:background="@color/colorAccent" />
+
+        <com.qmuiteam.qmui.widget.QMUITopBar
+            android:id="@+id/qm_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:background="@color/colorAccent"
+            app:qmui_topbar_title_color="@color/white"
+            app:qmui_topbar_title_text_size="35pt" />
+
+    </LinearLayout>
+
+
+</merge>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    tools:viewBindingIgnore="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="150pt"
+        android:layout_height="260pt"
+        android:layout_gravity="center"
+        android:layout_marginVertical="20pt">
+
+        <ImageView
+            android:id="@+id/iv_cover_home_horizental"
+            android:layout_width="match_parent"
+            android:layout_height="210pt"
+            android:scaleType="centerCrop"
+            android:src="#efefef"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_status_home_horizental"
+            android:layout_width="match_parent"
+            android:layout_height="40pt"
+            android:background="@color/home_color_64_666"
+            android:gravity="center"
+            android:text="哈哈"
+            android:textColor="@color/white"
+            android:textSize="22pt"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_cover_home_horizental"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_home_horizental"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="魂武双休"
+            android:textColor="@color/home_color_333"
+            android:textSize="25pt"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

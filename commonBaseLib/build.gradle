@@ -1,0 +1,85 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+        kotlinOptions {
+            jvmTarget = 1.8
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.dependencies["core-ktx"]
+    api rootProject.ext.dependencies["kotlin-standard"]
+    api rootProject.ext.dependencies["ktx-reflect"]
+    api rootProject.ext.dependencies["koin-scope"]
+    api rootProject.ext.dependencies["koin-viewmodel"]
+    api rootProject.ext.dependencies["koin-ext"]
+    api rootProject.ext.dependencies["koin-fragment"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["navi-fragment"]
+    api rootProject.ext.dependencies["navi-ui"]
+    api rootProject.ext.dependencies["navi-ui-ktx"]
+    api rootProject.ext.dependencies["navi-frag-ktx"]
+    api rootProject.ext.dependencies["annotations"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
+    api rootProject.ext.dependencies["okhttp3"]
+    api rootProject.ext.dependencies["QMUI"]
+    api rootProject.ext.dependencies["loadSir"]
+    api rootProject.ext.dependencies["avi-loading"]
+    api rootProject.ext.dependencies["lifecycle"]
+    api rootProject.ext.dependencies["lifecycle-viewmodel"]
+    api rootProject.ext.dependencies["lifecycle-livedata"]
+    api rootProject.ext.dependencies["lifecycle-save-state"]
+    api rootProject.ext.dependencies["lifecycle-process"]
+    api rootProject.ext.dependencies["activity"]
+    api rootProject.ext.dependencies["fragment"]
+    kapt rootProject.ext.dependencies["lifecycle-compiler"]
+
+    api rootProject.ext.dependencies["core-ktx"]
+    api rootProject.ext.dependencies["avi-loading"]
+    api rootProject.ext.dependencies["utilcode"]
+    api rootProject.ext.dependencies["autosize"]
+    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["EventBus"]
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glide-transformation"]
+    kapt(rootProject.ext.dependencies["glide"])
+    debugApi rootProject.ext.dependencies["leak-canary"]
+
+    api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["arouter-api"]
+    api rootProject.ext.dependencies["applifecycle-api"]
+
+    api rootProject.ext.dependencies["BRVAH"]
+    api rootProject.ext.dependencies["COIL"]
+
+
+}

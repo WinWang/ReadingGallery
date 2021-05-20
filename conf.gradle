@@ -1,0 +1,103 @@
+ext {
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.3",
+
+            minSdkVersion    : 21,
+            targetSdkVersion : 29,
+
+            corektx          : "1.3.2",
+            Vcoroutines      : "1.3.6",
+            navigation       : "2.2.2",
+            lifecycle        : "2.3.1",
+
+            VRetrofitSdk     : "2.9.0",
+            VOkhttp          : "4.3.1",
+            VRxlifecycle     : "3.1.0",
+            androidxAppCompat: "1.2.0",
+            androidxAnotation: "1.1.0",
+
+            koinVersion      : "2.2.0",
+            ktxActivity      : "1.2.3",
+            ktxFragment      : "1.3.3",
+
+    ]
+
+    dependencies = [
+            "core-ktx"                   : "androidx.core:core-ktx:${android["corektx"]}",
+            "kotlin-standard"            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            "ktx-reflect"                : "org.jetbrains.kotlin:kotlin-reflect:1.4.10",
+            "navi-fragment"              : "androidx.navigation:navigation-fragment:${android["navigation"]}",
+            "navi-ui"                    : "androidx.navigation:navigation-ui:${android["navigation"]}",
+            "navi-ui-ktx"                : "androidx.navigation:navigation-ui-ktx:${android["navigation"]}",
+            "navi-frag-ktx"              : "androidx.navigation:navigation-fragment-ktx:${android["navigation"]}",
+            "activity"                   : "androidx.activity:activity-ktx:${android["ktxActivity"]}",
+            "fragment"                   : "androidx.fragment:fragment-ktx:${android["ktxFragment"]}",
+
+            //lifecycle(lifecycle-extensions 中的 API 已弃用。您可以为特定 Lifecycle 工件添加所需的依赖项。)
+            "lifecycle"                  : "androidx.lifecycle:lifecycle-runtime-ktx:${android["lifecycle"]}",
+            "lifecycle-viewmodel"        : "androidx.lifecycle:lifecycle-viewmodel-ktx:${android["lifecycle"]}",
+            "lifecycle-livedata"         : "androidx.lifecycle:lifecycle-livedata-ktx:${android["lifecycle"]}",
+            "lifecycle-compiler"         : "androidx.lifecycle:lifecycle-compiler:${android["lifecycle"]}",
+            "lifecycle-save-state"       : "androidx.lifecycle:lifecycle-viewmodel-savedstate:${android["lifecycle"]}",
+            "lifecycle-process"          : "androidx.lifecycle:lifecycle-process:${android["lifecycle"]}",
+            //// alternately - if using Java8, use the following instead of lifecycle-compiler(用了这个就不用compiler)
+            "lifecycle-common"           : "androidx.lifecycle:lifecycle-common-java8:${android["lifecycle"]}",
+
+
+            //协程-viewmodel-ktx内置-可不引用
+            "coroutines"                 : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${android["VVcoroutines"]}",
+            "coroutinesAndroid"          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${android["VVcoroutines"]}",
+
+
+            //koin
+            "koin-scope"                 : "org.koin:koin-androidx-scope:${android["koinVersion"]}",
+            "koin-viewmodel"             : "org.koin:koin-androidx-viewmodel:${android["koinVersion"]}",
+            "koin-ext"                   : "org.koin:koin-androidx-ext:${android["koinVersion"]}",
+            "koin-fragment"              : "org.koin:koin-androidx-fragment:${android["koinVersion"]}",
+
+            "appcompat"                  : "androidx.appcompat:appcompat:${android["androidxAppCompat"]}",
+            "design"                     : "com.google.android.material:material:${android["androidxAppCompat"]}",
+            "annotations"                : "androidx.annotation:annotation:${android["androidxAnotation"]}",
+            "recyclerview-v7"            : "androidx.recyclerview:recyclerview:${android["androidxAppCompat"]}",
+            "cardview"                   : "androidx.cardview:cardview:${android["androidxAppCompat"]}",
+            "multidex"                   : 'androidx.multidex:multidex:2.0.0',
+
+            "glide"                      : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"             : "com.github.bumptech.glide:compiler:4.11.0",
+            "glide-transformation"       : "jp.wasabeef:glide-transformations:4.0.0",
+
+            "retrofit"                   : "com.squareup.retrofit2:retrofit:${android["VRetrofitSdk"]}",
+            "retrofit-converter-gson"    : "com.squareup.retrofit2:converter-gson:${android["VRetrofitSdk"]}",
+            "retrofit-adapter-rxjava"    : "com.squareup.retrofit2:adapter-rxjava2:${android["VRetrofitSdk"]}",
+            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${android["VOkhttp"]}",
+            "okhttp3"                    : "com.squareup.okhttp3:okhttp:${android["VOkhttp"]}",
+
+            "leak-canary"                : "com.squareup.leakcanary:leakcanary-android:2.4",
+
+            "aop"                        : "org.aspectj:aspectjrt:1.8.13",
+            "QMUI"                       : "com.qmuiteam:qmui:2.0.0-alpha10",
+            "loadSir"                    : "com.kingja.loadsir:loadsir:1.3.8",
+            "EventBus"                   : "org.greenrobot:eventbus:3.1.1",
+            "avi-loading"                : "com.wang.avi:library:2.1.3",
+            "utilcode"                   : "com.blankj:utilcodex:1.28.4",
+            "autosize"                   : "me.jessyan:autosize:1.2.1",
+            "liveDataBus"                : "com.jeremyliao:live-event-bus-x:1.5.7",
+            "mmkv"                       : "com.tencent:mmkv-static:1.2.2",
+            //阿里路由框架
+            "arouter-api"                : "com.alibaba:arouter-api:1.5.1",
+            "arouter-compiler"           : "com.alibaba:arouter-compiler:1.5.1",
+            //AppLifecycle
+            "applifecycle-api"           : "com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-api:1.0.4",
+            "applifecycle-compiler"      : "com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-compiler:1.0.4",
+
+            "BRVAH"                      : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4",
+            "pinedSection"               : "com.oushangfeng:PinnedSectionItemDecoration:1.3.2",
+            //图片加载框架
+            "COIL"                       : "io.coil-kt:coil:1.2.1"
+
+
+    ]
+
+
+}

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">main</string>
+
+    <string name="home_tab">首页</string>
+    <string name="type_tab">分类</string>
+    <string name="live_tab">直播</string>
+    <string name="my_tab">我的</string>
+
+
+</resources>

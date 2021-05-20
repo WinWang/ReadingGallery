@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/qmbt_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10pt"
+        android:layout_marginVertical="15pt"
+        android:gravity="center"
+        android:paddingHorizontal="20pt"
+        android:paddingVertical="10pt"
+        android:text="哈哈哈哈"
+        android:textColor="@color/home_color_666"
+        android:textSize="30pt"
+        app:qmui_backgroundColor="@color/home_color_dfdfdf"
+        app:qmui_radius="40pt" />
+
+</FrameLayout>

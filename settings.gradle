@@ -1,0 +1,9 @@
+include ':Frame:LibFlycoTabLayout'
+include ':bizModule:detailModule'
+include ':bizModule:mainModule'
+include ':bizModule:catModule'
+include ':bizModule:homeModule'
+include ':commonAppLib'
+include ':commonBaseLib'
+include ':app'
+rootProject.name = "ReadingGallery"
