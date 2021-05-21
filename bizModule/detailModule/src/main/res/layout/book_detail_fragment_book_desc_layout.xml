@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll">
+
+
+                <TextView
+                    android:id="@+id/tv_book_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:paddingHorizontal="30pt"
+                    android:paddingVertical="30pt"
+                    android:text="哈哈哈哈哈"
+                    android:textColor="@color/detail_color_666"
+                    android:textSize="28pt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80pt"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/qmt_select"
+                    android:layout_width="0dp"
+                    android:layout_height="70pt"
+                    android:layout_marginStart="30pt"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="选集、定位"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28pt"
+                    app:qmui_borderColor="@color/colorPrimary"
+                    app:qmui_borderWidth="1pt"
+                    app:qmui_radius="35pt" />
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="0dp" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/qmt_sort"
+                    android:layout_width="0dp"
+                    android:layout_height="70pt"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="反序"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28pt"
+                    app:qmui_borderColor="@color/colorPrimary"
+                    app:qmui_borderWidth="1pt"
+                    app:qmui_radius="35pt" />
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="0dp" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/qmt_focus"
+                    android:layout_width="0dp"
+                    android:layout_height="70pt"
+                    android:layout_marginEnd="30pt"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="关注"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28pt"
+                    app:qmui_borderColor="@color/colorPrimary"
+                    app:qmui_borderWidth="1pt"
+                    app:qmui_radius="35pt" />
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:itemCount="10" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</LinearLayout>

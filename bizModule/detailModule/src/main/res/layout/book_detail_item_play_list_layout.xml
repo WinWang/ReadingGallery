@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80pt">
+
+    <TextView
+        android:id="@+id/tv_play_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="30pt"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+        android:textColor="@color/detail_color_666"
+        android:textSize="30pt" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="30pt"
+        android:background="@color/detail_color_64_666" />
+
+
+</FrameLayout>

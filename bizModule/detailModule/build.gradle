@@ -75,4 +75,5 @@ dependencies {
     kapt rootProject.ext.dependencies["arouter-compiler"]
     kapt rootProject.ext.dependencies["applifecycle-compiler"]
     implementation rootProject.ext.dependencies["pinedSection"]
+    implementation project(path: ':Frame:LibFlycoTabLayout')
 }

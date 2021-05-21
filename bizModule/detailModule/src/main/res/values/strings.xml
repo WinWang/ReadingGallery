@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">detailModule</string>
+
+    <string-array name="tab_list">
+        <item>播放列表</item>
+        <item>资源简介</item>
+    </string-array>
+
 </resources>

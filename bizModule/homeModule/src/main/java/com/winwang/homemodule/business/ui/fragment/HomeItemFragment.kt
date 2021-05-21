@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.alibaba.android.arouter.launcher.ARouter
 import com.oushangfeng.pinnedsectionitemdecoration.PinnedHeaderItemDecoration
+import com.winwang.commonapplib.common.RouterConstant
 import com.winwang.homemodule.business.adapter.HomeItemAdpater
 import com.winwang.homemodule.databinding.FragmentHomeItemLayoutBinding
 import com.winwang.homemodule.http.HomeApi
@@ -13,6 +15,7 @@ import com.winwang.homemodule.R
 import com.winwang.homemodule.model.HomeListModel
 import com.winwang.mvvm.base.fragment.BaseVmVBFragment
 import com.winwang.mvvm.base.viewmodel.BaseViewModel
+import java.security.spec.KeySpec
 
 /**
  *Created by WinWang on 2021/5/17
@@ -54,6 +57,15 @@ class HomeItemFragment : BaseVmVBFragment<HomeItemViewModel, FragmentHomeItemLay
                     else -> 4
                 }
             }
+
+            setOnItemClickListener { adapter, view, position ->
+                val book = dataList[position]
+                ARouter.getInstance().build(RouterConstant.DETAIL.DETAIL_MODULE_DETAIL_ROUTE)
+                    .withString(RouterConstant.KEYS.INTENT_DATA, book.book_id)
+                    .withString(RouterConstant.KEYS.INTENT_NAME, book.name)
+                    .navigation()
+            }
+
         }
         mBinding.rvHome.adapter = adapter
         mBinding.rvHome.addItemDecoration(

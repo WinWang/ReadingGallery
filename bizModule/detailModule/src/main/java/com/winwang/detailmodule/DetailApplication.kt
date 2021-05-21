@@ -2,17 +2,18 @@ package com.winwang.detailmodule
 
 import android.content.Context
 import com.blankj.utilcode.util.LogUtils
+import com.hm.iou.lifecycle.annotation.AppLifecycle
 import com.hm.lifecycle.api.IApplicationLifecycleCallbacks
 import com.winwang.detailmodule.di.detailModule
 import org.koin.core.context.GlobalContext
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
-import java.lang.Exception
 
 /**
  *Created by WinWang on 2021/5/19
  *Description->
  */
+@AppLifecycle
 class DetailApplication : IApplicationLifecycleCallbacks {
 
     override fun onCreate(context: Context?) {

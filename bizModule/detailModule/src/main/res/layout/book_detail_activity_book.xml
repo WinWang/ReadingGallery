@@ -9,7 +9,32 @@
 
     <include layout="@layout/head_top_bar_layout" />
 
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tab_detail"
+        android:layout_width="match_parent"
+        android:layout_height="90pt"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tl_indicator_color="#FFE65C5C"
+        app:tl_indicator_corner_radius="4pt"
+        app:tl_indicator_height="6pt"
+        app:tl_indicator_width="80pt"
+        app:tl_indicator_width_equal_title="true"
+        app:tl_tab_space_equal="true"
+        app:tl_textSelectColor="#FF403F3E"
+        app:tl_textUnselectColor="#FF999999"
+        app:tl_textsize="32pt" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:background="@color/detail_color_64_666" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

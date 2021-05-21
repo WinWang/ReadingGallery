@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:elevation="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="210pt"
+                app:layout_scrollFlags="scroll">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/iv_cover_book"
+                    android:layout_width="150pt"
+                    android:layout_height="190pt"
+                    android:layout_marginStart="10pt"
+                    android:src="#efefef"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.166" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.333" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.666" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.833" />
+
+
+                <TextView
+                    android:id="@+id/tv_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="名称："
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide1"
+                    app:layout_constraintStart_toEndOf="@+id/iv_cover_book"
+                    app:layout_constraintTop_toTopOf="@+id/guide1" />
+
+
+                <TextView
+                    android:id="@+id/tv_teller_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="播音："
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide2"
+                    app:layout_constraintStart_toEndOf="@+id/iv_cover_book"
+                    app:layout_constraintTop_toTopOf="@+id/guide2" />
+
+                <TextView
+                    android:id="@+id/tv_type_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="类型："
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide3"
+                    app:layout_constraintStart_toEndOf="@+id/iv_cover_book"
+                    app:layout_constraintTop_toTopOf="@+id/guide3" />
+
+                <TextView
+                    android:id="@+id/tv_status_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="状态："
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide4"
+                    app:layout_constraintStart_toEndOf="@+id/iv_cover_book"
+                    app:layout_constraintTop_toTopOf="@+id/guide4" />
+
+                <TextView
+                    android:id="@+id/tv_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="日期："
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide5"
+                    app:layout_constraintStart_toEndOf="@+id/iv_cover_book"
+                    app:layout_constraintTop_toTopOf="@+id/guide5" />
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="--"
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide1"
+                    app:layout_constraintStart_toEndOf="@+id/tv_name_text"
+                    app:layout_constraintTop_toTopOf="@+id/guide1" />
+
+
+                <TextView
+                    android:id="@+id/tv_teller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="--"
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide2"
+                    app:layout_constraintStart_toEndOf="@+id/tv_name_text"
+                    app:layout_constraintTop_toTopOf="@+id/guide2" />
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="--"
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide3"
+                    app:layout_constraintStart_toEndOf="@+id/tv_name_text"
+                    app:layout_constraintTop_toTopOf="@+id/guide3" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="--"
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide4"
+                    app:layout_constraintStart_toEndOf="@+id/tv_name_text"
+                    app:layout_constraintTop_toTopOf="@+id/guide4" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15pt"
+                    android:text="--"
+                    android:textColor="@color/detail_color_999"
+                    android:textSize="26pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/guide5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_name_text"
+                    app:layout_constraintTop_toTopOf="@+id/guide5" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80pt"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/qmt_select"
+                    android:layout_width="0dp"
+                    android:layout_height="70pt"
+                    android:layout_marginStart="30pt"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="选集、定位"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28pt"
+                    app:qmui_borderColor="@color/colorPrimary"
+                    app:qmui_borderWidth="1pt"
+                    app:qmui_radius="35pt" />
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="0dp" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/qmt_sort"
+                    android:layout_width="0dp"
+                    android:layout_height="70pt"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="反序"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28pt"
+                    app:qmui_borderColor="@color/colorPrimary"
+                    app:qmui_borderWidth="1pt"
+                    app:qmui_radius="35pt" />
+
+                <Space
+                    android:layout_width="30pt"
+                    android:layout_height="0dp" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/qmt_focus"
+                    android:layout_width="0dp"
+                    android:layout_height="70pt"
+                    android:layout_marginEnd="30pt"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="关注"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28pt"
+                    app:qmui_borderColor="@color/colorPrimary"
+                    app:qmui_borderWidth="1pt"
+                    app:qmui_radius="35pt" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1pt"
+                android:layout_marginBottom="10pt"
+                android:background="@color/detail_color_64_666" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:itemCount="10"
+            tools:listitem="@layout/book_detail_item_play_list_layout" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</LinearLayout>

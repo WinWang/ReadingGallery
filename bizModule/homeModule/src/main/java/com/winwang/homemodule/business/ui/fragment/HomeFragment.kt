@@ -25,6 +25,7 @@ class HomeFragment : BaseVmVBFragment<HomeViewModel, FragmentHomeLayoutBinding>(
         fragmentList.add(HomeItemFragment.getInstance(2))
         fragmentList.add(HomeItemFragment.getInstance(3))
         fragmentList.add(HomeItemFragment.getInstance(4))
+        mBinding.vpHome.offscreenPageLimit = 4
         val simpleFragmentPagerAdapter =
             SimpleFragmentPagerAdapter(childFragmentManager, fragmentList)
         mBinding.vpHome.adapter = simpleFragmentPagerAdapter

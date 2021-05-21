@@ -2,8 +2,11 @@ package com.winwang.detailmodule.di
 
 
 import com.winwang.detailmodule.business.activity.BookDetailViewModel
+import com.winwang.detailmodule.business.fragment.BookDescFragment
+import com.winwang.detailmodule.business.fragment.PlayListFragment
 import com.winwang.detailmodule.http.DetailApi
 import com.winwang.detailmodule.http.DetailServiceApi
+import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -14,8 +17,14 @@ import org.koin.dsl.module
 
 //viewmodel注入管理类
 val viewModelModule = module {
-    viewModel { BookDetailViewModel() }
+    viewModel { BookDetailViewModel(get()) }
 }
+
+val fragmentModule = module {
+    fragment { BookDescFragment() }
+    fragment { PlayListFragment() }
+}
+
 
 //远程请求数据类
 val remoteModule = module {
@@ -23,5 +32,5 @@ val remoteModule = module {
     single<DetailApi> { DetailServiceApi }
 }
 
-val detailModule = listOf(viewModelModule, remoteModule)
+val detailModule = listOf(viewModelModule, remoteModule, fragmentModule)
 

@@ -1,10 +1,8 @@
 package com.winwang.mvvm.common
 
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
 
 open class SimpleFragmentPagerAdapter(
     fm: FragmentManager,
@@ -30,10 +28,6 @@ open class SimpleFragmentPagerAdapter(
      */
     override fun getItemId(position: Int): Long {
         return fragments[position].hashCode().toLong()
-    }
-
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-
     }
 
 }
