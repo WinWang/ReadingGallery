@@ -22,19 +22,19 @@ android {
         if (isModule.toBoolean()) {
             applicationId "com.winwang.homemodule"
         }
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode 1
-        versionName "1.0"
+//        minSdkVersion rootProject.ext.android["minSdkVersion"]
+//        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+//        versionCode 1
+//        versionName "1.0"
 
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -45,9 +45,9 @@ android {
     }
 
     //databinding启用
-    dataBinding {
-        enabled = true
-    }
+//    dataBinding {
+//        enabled = true
+//    }
 
     //viewbinding启用
     viewBinding {
@@ -75,6 +75,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':commonAppLib')
+    implementation project(':bizModule:homeModule-api')
     implementation project(path: ':Frame:LibFlycoTabLayout')
     implementation rootProject.ext.dependencies["pinedSection"]
     kapt rootProject.ext.dependencies["arouter-compiler"]

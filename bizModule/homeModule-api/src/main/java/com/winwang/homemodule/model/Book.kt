@@ -1,4 +1,4 @@
-package com.winwang.commonapplib.model
+package com.winwang.homemodule.model
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
 

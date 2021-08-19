@@ -45,9 +45,9 @@ android {
     }
 
     //databinding启用
-    dataBinding {
-        enabled = true
-    }
+//    dataBinding {
+//        enabled = true
+//    }
 
     //viewbinding启用
     viewBinding {

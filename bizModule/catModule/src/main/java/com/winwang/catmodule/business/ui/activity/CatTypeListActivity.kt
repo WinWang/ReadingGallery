@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.blankj.utilcode.util.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.winwang.catmodule.R
@@ -14,7 +13,7 @@ import com.winwang.catmodule.business.adapter.BookTypeListAdapter
 import com.winwang.catmodule.databinding.CatModuleActivityCatListLayoutBinding
 import com.winwang.catmodule.http.CatApi
 import com.winwang.commonapplib.common.RouterConstant
-import com.winwang.commonapplib.model.Book
+import com.winwang.homemodule.model.Book
 import com.winwang.mvvm.base.activity.BaseVmVBActivity
 import com.winwang.mvvm.base.viewmodel.BaseViewModel
 
@@ -37,7 +36,7 @@ class CatTypeListActivity :
 
     override fun isDIViewModel() = true
 
-    private val dataList = ArrayList<Book>()
+    private val dataList = ArrayList<com.winwang.homemodule.model.Book>()
     private val mAdapter: BookTypeListAdapter by lazy {
         BookTypeListAdapter(dataList)
     }
@@ -86,7 +85,7 @@ class CatTypeListActivity :
 
 
 class CatTypeListViewModel(private val api: CatApi) : BaseViewModel() {
-    fun getBookTypeList(typeId: String): LiveData<List<Book>> = emit {
+    fun getBookTypeList(typeId: String): LiveData<List<com.winwang.homemodule.model.Book>> = emit {
         api.getCategoryList(typeId).resultData().books
     }
 }

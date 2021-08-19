@@ -1,0 +1,7 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from: '../../depends.gradle'
+
+dependencies {
+    implementation project(path: ':commonAppLib')
+}

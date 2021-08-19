@@ -3,6 +3,7 @@ package com.winwang.main
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.blankj.utilcode.util.FragmentUtils
+import com.winwang.commonapplib.common.ServiceConstant
 import com.winwang.commonapplib.provider.ICatProvider
 import com.winwang.commonapplib.provider.IHomeProvider
 import com.winwang.main.databinding.ActivityMainModuleBinding
@@ -10,33 +11,23 @@ import com.winwang.mvvm.base.activity.BaseVBActivity
 
 class MainActivity : BaseVBActivity<ActivityMainModuleBinding>() {
 
-    @Autowired(name = "/cat/main")
-    @JvmField
-    var catProvider: ICatProvider? = null
+    @Autowired(name = ServiceConstant.CAT_MODULE_CAT_ROUTE)
+    lateinit var catProvider: ICatProvider
 
-    @Autowired(name = "/home/main")
-    @JvmField
-    var homeProvider: IHomeProvider? = null
+    @Autowired(name = ServiceConstant.HOME_MODULE_HOME_ROUTE)
+    lateinit var homeProvider: IHomeProvider
 
-    val arrayList = ArrayList<Fragment>()
+    private val arrayList = ArrayList<Fragment>()
 
     override fun initViewData() {
-        val catFragment = catProvider?.getCatFragment()
-        val catFragment1 = catProvider?.getCatFragment()
-        val homeFragment = homeProvider?.getHomeFragment()
-        val homeFragment1 = homeProvider?.getHomeFragment()
-        homeFragment?.let {
-            arrayList.add(it)
-        }
-        catFragment?.let {
-            arrayList.add(it)
-        }
-        homeFragment1?.let {
-            arrayList.add(it)
-        }
-        catFragment1?.let {
-            arrayList.add(it)
-        }
+        val catFragment = catProvider.getCatFragment()
+        val catFragment1 = catProvider.getCatFragment()
+        val homeFragment = homeProvider.getHomeFragment()
+        val homeFragment1 = homeProvider.getHomeFragment()
+        arrayList.add(homeFragment)
+        arrayList.add(catFragment)
+        arrayList.add(homeFragment1)
+        arrayList.add(catFragment1)
         initView()
     }
 

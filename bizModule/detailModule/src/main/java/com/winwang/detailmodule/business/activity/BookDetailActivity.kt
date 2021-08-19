@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.winwang.commonapplib.common.RouterConstant
+import com.winwang.homemodule.model.Book
 import com.winwang.detailmodule.R
 import com.winwang.detailmodule.business.fragment.BookDescFragment
 import com.winwang.detailmodule.business.fragment.PlayListFragment
@@ -66,6 +67,12 @@ class BookDetailViewModel(private val api: DetailApi) : BaseViewModel() {
         MutableLiveData<BookDetailModel>()
     }
 
+    val bookListLiveData by lazy {
+        MutableLiveData<List<Book>>()
+    }
+
+
+    @Deprecated(message = "使用全局livedata观测")
     fun getBookPlayList(): LiveData<BookDetailModel> = emit {
         api.getBookDetail(bookId).resultData()
     }
@@ -74,6 +81,13 @@ class BookDetailViewModel(private val api: DetailApi) : BaseViewModel() {
         launch {
             val resultData = api.getBookDetail(bookId).resultData()
             playListLiveData.postValue(resultData)
+        }
+    }
+
+    fun getAboutList() {
+        launch {
+            val resultData = api.getAboutBook(bookId).resultData().recommend
+            bookListLiveData.postValue(resultData)
         }
     }
 

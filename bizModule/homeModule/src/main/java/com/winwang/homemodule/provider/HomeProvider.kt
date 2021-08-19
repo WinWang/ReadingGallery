@@ -2,6 +2,7 @@ package com.winwang.homemodule.provider
 
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.winwang.commonapplib.common.ServiceConstant
 import com.winwang.commonapplib.provider.IHomeProvider
 import com.winwang.homemodule.business.ui.fragment.HomeFragment
 
@@ -10,7 +11,7 @@ import com.winwang.homemodule.business.ui.fragment.HomeFragment
  *Description->
  */
 
-@Route(path = "/home/main", name = "首页服务")
+@Route(path = ServiceConstant.HOME_MODULE_HOME_ROUTE, name = "首页服务")
 class HomeProvider : IHomeProvider {
 
     override fun getHomeFragment() =

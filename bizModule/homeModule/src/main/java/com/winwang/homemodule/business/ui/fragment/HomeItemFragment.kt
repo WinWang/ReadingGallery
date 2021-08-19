@@ -10,12 +10,11 @@ import com.winwang.commonapplib.common.RouterConstant
 import com.winwang.homemodule.business.adapter.HomeItemAdpater
 import com.winwang.homemodule.databinding.FragmentHomeItemLayoutBinding
 import com.winwang.homemodule.http.HomeApi
-import com.winwang.commonapplib.model.Book
 import com.winwang.homemodule.R
+import com.winwang.homemodule.model.Book
 import com.winwang.homemodule.model.HomeListModel
 import com.winwang.mvvm.base.fragment.BaseVmVBFragment
 import com.winwang.mvvm.base.viewmodel.BaseViewModel
-import java.security.spec.KeySpec
 
 /**
  *Created by WinWang on 2021/5/17

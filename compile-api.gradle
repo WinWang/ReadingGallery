@@ -1,11 +1,3 @@
-apply from: 'compile-api.gradle'
-//dependencyResolutionManagement {
-//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-//    repositories {
-//        google()
-//        mavenCentral()
-//    }
-//}
 def includeWithApi(String moduleName) {
     //先正常加载这个模块
     include(moduleName)
@@ -49,14 +41,14 @@ def includeWithApi(String moduleName) {
     //删除空文件夹
     deleteEmptyDir(new File(targetDir))
 
-//    //为AndroidManifest新建路径，路径就是在原来的包下面新建一个api包，作为AndroidManifest里面的包名
-    String packagePath = "${targetDir}/src/main/java/com/kpa/${originName}"
-//
-//
-//    //修改AndroidManifest文件包路径
-    fileReader("${targetDir}/src/main/AndroidManifest.xml", "winwang", "${originName}.api")
-//
-//    new File(packagePath).mkdirs()
+    //为AndroidManifest新建路径，路径就是在原来的包下面新建一个api包，作为AndroidManifest里面的包名
+    String packagePath = "${targetDir}/src/main/java/com/kpa/${originName}/api"
+
+
+    //修改AndroidManifest文件包路径
+    fileReader("${targetDir}/src/main/AndroidManifest.xml", "kpa", "${originName}.api")
+
+    new File(packagePath).mkdirs()
 
     //重命名一下gradle
     def build = new File(targetDir + "/api.gradle")
@@ -65,12 +57,10 @@ def includeWithApi(String moduleName) {
     }
 
     // 重命名.api文件，生成正常的.java文件
-    renameApiFiles(targetDir, '.api', '.kt')
-
-    print(">>>>>>>>>$sdkName")
+    renameApiFiles(targetDir, '.api', '.java')
 
     //正常加载新的模块
-    include ":bizModule:$sdkName"
+    include ":$sdkName"
 }
 
 private void deleteEmptyDir(File dir) {
@@ -135,19 +125,13 @@ def fileReader(path, name, sdkName) {
         }
         return readerString
     }
+    Test.testFun()
 }
 
+class TestAPI{
+    static def testFun() {
+        print(">>>>>>>>>>>>>>>")
+    }
+}
 
-rootProject.name = "ReadingGallery"
-
-include ':app'
-include ':Frame:LibFlycoTabLayout'
-include ':bizModule:detailModule'
-include ':bizModule:mainModule'
-include ':bizModule:catModule'
-include ':commonAppLib'
-include ':commonBaseLib'
-includeWithApi(':bizModule:homeModule')
-//include ':bizModule:homeModule'
-//include ':bizModule:homeModule-api'
 

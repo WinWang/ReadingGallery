@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.winwang.catmodule.R
 import com.winwang.catmodule.http.HttpURL.BASE_IMAGE_URL
-import com.winwang.commonapplib.model.Book
+import com.winwang.homemodule.model.Book
 
 /**
  *Created by WinWang on 2021/5/20
