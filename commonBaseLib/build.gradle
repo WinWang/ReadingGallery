@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -9,8 +8,6 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode 1
-        versionName "1.0"
         kotlinOptions {
             jvmTarget = 1.8
         }
@@ -36,10 +33,7 @@ dependencies {
     api rootProject.ext.dependencies["core-ktx"]
     api rootProject.ext.dependencies["kotlin-standard"]
     api rootProject.ext.dependencies["ktx-reflect"]
-    api rootProject.ext.dependencies["koin-scope"]
-    api rootProject.ext.dependencies["koin-viewmodel"]
-    api rootProject.ext.dependencies["koin-ext"]
-    api rootProject.ext.dependencies["koin-fragment"]
+    api rootProject.ext.dependencies["koinAndroid"]
     api rootProject.ext.dependencies["design"]
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["navi-fragment"]

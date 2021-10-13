@@ -38,6 +38,7 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
 
     private lateinit var loadingDialog: LoadDialog
     lateinit var mBinding: VB
+    private var hasInit = false
 
     init {
         val type = javaClass.genericSuperclass
@@ -90,12 +91,15 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     open fun isDIViewModel(): Boolean = false
 
     open fun init() {
-        lifecycleOwner = this.findViewTreeLifecycleOwner()!!
-        viewModelStoreOwner = this.findViewTreeViewModelStoreOwner()!!
+        if (!hasInit) {
+            lifecycleOwner = this.findViewTreeLifecycleOwner()!!
+            viewModelStoreOwner = this.findViewTreeViewModelStoreOwner()!!
 //        lifecycleOwner = getLifeOwner()!!
 //        viewModelStoreOwner = getViewModelOwner()!!
-        lifecycleOwner.lifecycle.addObserver(this)
-        LogUtils.d("viewInit>>>>>>>>>>")
+            lifecycleOwner.lifecycle.addObserver(this)
+            LogUtils.d("viewInit>>>>>>>>>>")
+            hasInit = true
+        }
 
     }
 
@@ -123,14 +127,14 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     }
 
 
-    override fun onDestroy(owner: LifecycleOwner) {
+    override fun onDestroy(source: LifecycleOwner) {
         if (useEventBus()) {
             EventBus.getDefault().unregister(this)
         }
-        owner.lifecycle.removeObserver(this)
+        source.lifecycle.removeObserver(this)
     }
 
-    override fun onCreate(owner: LifecycleOwner) {
+    override fun onCreate(source: LifecycleOwner) {
         LogUtils.d("onCreate>>>>>>>>>>")
         if (useEventBus()) {
             EventBus.getDefault().register(this)
@@ -141,11 +145,11 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
         initData()
     }
 
-    override fun onPause(owner: LifecycleOwner) {
+    override fun onPause(source: LifecycleOwner) {
         LogUtils.d("onPause>>>>>>>>>>")
     }
 
-    override fun onResume(owner: LifecycleOwner) {
+    override fun onResume(source: LifecycleOwner) {
         LogUtils.d("onResume>>>>>>>>>>")
     }
 

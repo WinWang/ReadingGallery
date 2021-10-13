@@ -23,10 +23,10 @@ class MainActivity : BaseVBActivity<ActivityMainModuleBinding>() {
         val catFragment = catProvider.getCatFragment()
         val catFragment1 = catProvider.getCatFragment()
         val homeFragment = homeProvider.getHomeFragment()
-        val homeFragment1 = homeProvider.getHomeFragment()
+        val testFragment = homeProvider.getTestFragment()
         arrayList.add(homeFragment)
         arrayList.add(catFragment)
-        arrayList.add(homeFragment1)
+        arrayList.add(testFragment)
         arrayList.add(catFragment1)
         initView()
     }

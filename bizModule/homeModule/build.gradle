@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 kapt {
-    generateStubs = true
+//    generateStubs = true
     arguments {
         // 路由框架译配置
         arg("AROUTER_MODULE_NAME", project.getName())
@@ -22,10 +22,10 @@ android {
         if (isModule.toBoolean()) {
             applicationId "com.winwang.homemodule"
         }
-//        minSdkVersion rootProject.ext.android["minSdkVersion"]
-//        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-//        versionCode 1
-//        versionName "1.0"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
 
     }
 

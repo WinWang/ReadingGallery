@@ -1,10 +1,12 @@
 package com.winwang.homemodule.provider
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.winwang.commonapplib.common.ServiceConstant
 import com.winwang.commonapplib.provider.IHomeProvider
 import com.winwang.homemodule.business.ui.fragment.HomeFragment
+import com.winwang.homemodule.business.ui.fragment.TestFragment
 
 /**
  *Created by WinWang on 2021/5/13
@@ -16,6 +18,9 @@ class HomeProvider : IHomeProvider {
 
     override fun getHomeFragment() =
         HomeFragment()
+
+    override fun getTestFragment() =
+        TestFragment()
 
     override fun init(context: Context?) {
 

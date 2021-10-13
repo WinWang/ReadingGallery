@@ -40,7 +40,7 @@ class CatFragment : BaseVmVBFragment<CatViewModel, FragmentCatBinding>(),
                 }
             }
 
-            setOnItemClickListener { adapter, view, position ->
+            setOnItemClickListener { _, _, position ->
                 ARouter.getInstance().build(RouterConstant.CATEGORY.CAT_MODULE_BOOK_TYPE_LIST_ROUTE)
                     .withString(RouterConstant.KEYS.INTENT_DATA, dataList[position].type_id)
                     .withString(RouterConstant.KEYS.INTENT_NAME, dataList[position].name)

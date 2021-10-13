@@ -62,6 +62,8 @@ abstract class BaseFragment : Fragment(), IView {
         }
     }
 
+
+
     open fun generateView(inflater: LayoutInflater, container: ViewGroup?) {
         mRootView = inflater.inflate(getLayoutId(), container, false)
     }

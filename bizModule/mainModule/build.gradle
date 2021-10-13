@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 kapt {
-    generateStubs = true
+//    generateStubs = true
     arguments {
         // 路由框架译配置
         arg("AROUTER_MODULE_NAME", project.getName())
