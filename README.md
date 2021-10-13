@@ -1,0 +1,5 @@
+# ReadingGallery
+提交组件化听书廊项目
+本项目基于Jetpack组件开发的MVVM组件化项目，内容包含Kotlin+Koin（依赖注入）+coil（图片加载）+couroutine（协程）+ViewModel+LiveData+ViewBinding+DataBinding,组件化通信基于案例Arouter开源框架，使用了腾讯API去中心化方案，降低代码耦合。
+内部封装了具有网络请求和生命周期感知能力的自定义组合View，针对单页面多接口场景比较实用，目前已在生产项目中运用半年多时间，具体可见项目中BaseVBViewComponent
+内部可以根据使用爱好选择Viewbinding还是DataBinding，都在基类做了对应集成，viewmodel同时也可以按自己喜好是否使用koin注入对应View层
