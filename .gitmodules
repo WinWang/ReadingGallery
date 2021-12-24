@@ -1,0 +1,3 @@
+[submodule "flutter_wan_android"]
+	path = flutter_wan_android
+	url = https://github.com/WinWang/flutter_wan_android.git
