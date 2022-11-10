@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:shimmer_auto_start="true">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/_333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="3pt"
+            android:background="@color/_333" />
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="3pt"
+            android:background="@color/_333" />
+
+        <View
+            android:layout_width="380dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="3pt"
+            android:background="@color/_333" />
+
+        <View
+            android:layout_width="380dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="3pt"
+            android:background="@color/_333" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</com.facebook.shimmer.ShimmerFrameLayout>

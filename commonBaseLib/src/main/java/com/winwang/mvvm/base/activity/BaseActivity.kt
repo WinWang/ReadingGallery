@@ -19,10 +19,7 @@ import com.qmuiteam.qmui.widget.QMUITopBar
 import com.winwang.mvvm.R
 import com.winwang.mvvm.base.IView
 import com.winwang.mvvm.base.view.BaseViewComponent
-import com.winwang.mvvm.loadsir.EmptyCallback
-import com.winwang.mvvm.loadsir.ErrorCallback
-import com.winwang.mvvm.loadsir.LoadingCallback
-import com.winwang.mvvm.loadsir.TimeoutCallback
+import com.winwang.mvvm.loadsir.*
 import com.winwang.mvvm.widget.LoadDialog
 import me.jessyan.autosize.AutoSize
 import org.greenrobot.eventbus.EventBus
@@ -103,6 +100,9 @@ abstract class BaseActivity : AppCompatActivity(), IView {
 
     protected open fun useEventBus(): Boolean = false
 
+    open fun useShimmerLayout(): Boolean = true
+
+    open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
 
     open fun initViewData() {
 
@@ -122,6 +122,11 @@ abstract class BaseActivity : AppCompatActivity(), IView {
             mLoadService?.showCallback(LoadingCallback::class.java)
             loadNet()
         }
+        if (useShimmerLayout()) {
+            mLoadService?.loadLayout?.addCallback(ShimmerCallback(shimmerLayout()))
+            mLoadService?.showCallback(ShimmerCallback::class.java)
+        }
+
     }
 
     private fun initViewComponent(it: View) {

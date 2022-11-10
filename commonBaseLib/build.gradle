@@ -74,6 +74,9 @@ dependencies {
 
     api rootProject.ext.dependencies["BRVAH"]
     api rootProject.ext.dependencies["COIL"]
+    api rootProject.ext.dependencies["shimmer"]
+
+
 
 
 }

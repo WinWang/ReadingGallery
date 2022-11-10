@@ -7,21 +7,30 @@
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
+    <include layout="@layout/head_top_bar_layout" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/rv_test"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_test"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="100pt"
-        android:gravity="center"
-        android:textSize="26pt"
-        android:id="@+id/bt_send_event"
-        android:text="发送事件"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_send_event"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:gravity="center"
+            android:text="发送事件"
+            android:textSize="26pt" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </LinearLayout>

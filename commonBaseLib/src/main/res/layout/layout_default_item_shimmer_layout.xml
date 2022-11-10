@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:shimmer_auto_start="true">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="200pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginBottom="10pt"
+        android:background="@color/qmui_config_color_red" />
+
+</com.facebook.shimmer.ShimmerFrameLayout>

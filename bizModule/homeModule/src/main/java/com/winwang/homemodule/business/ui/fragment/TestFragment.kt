@@ -2,10 +2,7 @@ package com.winwang.homemodule.business.ui.fragment
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewTreeLifecycleOwner
-import androidx.lifecycle.ViewTreeViewModelStoreOwner
-import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -14,6 +11,8 @@ import com.winwang.homemodule.business.ui.viewcomponent.TestEvent
 import com.winwang.homemodule.business.ui.viewcomponent.TestViewComponent
 import com.winwang.homemodule.databinding.FragmentHomeTestLayoutBinding
 import com.winwang.mvvm.base.fragment.BaseVBFragment
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -26,7 +25,8 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mTopBar?.setTitle("测试")
+        setLoadSir(mBinding.contentLayout)
         for (index in 1..100) {
             val dataBean = DataBean(age = index)
             dataList.add(dataBean)
@@ -36,10 +36,33 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
         mBinding.rvTest.layoutManager = LinearLayoutManager(context)
         mBinding.rvTest.adapter = testAdapter
         mBinding.btSendEvent.setOnClickListener {
-            EventBus.getDefault().post(TestEvent("123123"))
+            EventBus.getDefault().postSticky(TestEvent("123123"))
         }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            delay(10000)
+            showSuccess()
+        }
+    }
 
+    override fun loadSirSelf(): Boolean {
+        return true
+    }
+
+    override fun useLoadSir(): Boolean {
+        return true
+    }
+
+    override fun useShimmerLayout(): Boolean {
+        return true
+    }
+
+    override fun shimmerLayout(): Int {
+        return R.layout.layout_test_shimmer
+    }
+
+    override fun shimmerList(): Boolean {
+        return true
     }
 
 }

@@ -69,7 +69,7 @@ class TestViewComponent @JvmOverloads constructor(
     override fun useEventBus() = true
 
     @SuppressLint("SetTextI18n")
-    @Subscribe(threadMode = ThreadMode.POSTING)
+    @Subscribe(threadMode = ThreadMode.POSTING, sticky = true)
     fun eventFun(event: TestEvent) {
         itemData?.run {
             this.age = event.name.toInt()

@@ -1,6 +1,7 @@
 package com.winwang.mvvm.base.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,7 @@ import com.qmuiteam.qmui.widget.QMUITopBar
 import com.winwang.mvvm.R
 import com.winwang.mvvm.base.IView
 import com.winwang.mvvm.base.view.BaseViewComponent
-import com.winwang.mvvm.loadsir.EmptyCallback
-import com.winwang.mvvm.loadsir.ErrorCallback
-import com.winwang.mvvm.loadsir.LoadingCallback
-import com.winwang.mvvm.loadsir.TimeoutCallback
+import com.winwang.mvvm.loadsir.*
 import com.winwang.mvvm.widget.LoadDialog
 import org.greenrobot.eventbus.EventBus
 
@@ -63,7 +61,6 @@ abstract class BaseFragment : Fragment(), IView {
     }
 
 
-
     open fun generateView(inflater: LayoutInflater, container: ViewGroup?) {
         mRootView = inflater.inflate(getLayoutId(), container, false)
     }
@@ -104,15 +101,25 @@ abstract class BaseFragment : Fragment(), IView {
      */
     open fun isShowBack(): Boolean = false
 
+    open fun useShimmerLayout(): Boolean = false
+
+    open fun shimmerList(): Boolean = true
+
+    open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
 
     protected open fun useEventBus(): Boolean = false
 
     abstract fun getLayoutId(): Int
 
-    private fun setLoadSir(it: View) {
+    open fun setLoadSir(it: View) {
         mLoadService = LoadSir.getDefault().register(it) {
             mLoadService?.showCallback(LoadingCallback::class.java)
             loadNet()
+        }
+        if (useShimmerLayout()) {
+            mLoadService?.loadLayout?.setupCallback(ShimmerCallback(shimmerLayout(), shimmerList()))
+
+            mLoadService?.showCallback(ShimmerCallback::class.java)
         }
     }
 
