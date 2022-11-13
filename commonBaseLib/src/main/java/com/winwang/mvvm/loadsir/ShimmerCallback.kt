@@ -27,7 +27,7 @@ class ShimmerCallback(var shimmerLayout: Int = R.layout.layout_default_item_shim
 
     override fun onReloadEvent(context: Context?, view: View?): Boolean {
         //阻断通用设置重试点击按钮
-        return true
+        return false
     }
 
     override fun onAttach(context: Context?, view: View?) {

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_empty"
+    android:id="@+id/layout_load_sir_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="false"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,19 +13,19 @@
         android:background="@drawable/common_empty_img" />
 
     <TextView
-        android:layout_marginTop="20pt"
         android:id="@+id/tv_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20pt"
         android:text="@string/fine_no_data"
         android:textColor="#333333"
         android:textSize="33pt" />
 
     <TextView
-        android:textColor="#999"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10pt"
         android:text="@string/click_me_to_retry"
+        android:textColor="#999"
         android:textSize="28pt" />
 </LinearLayout>

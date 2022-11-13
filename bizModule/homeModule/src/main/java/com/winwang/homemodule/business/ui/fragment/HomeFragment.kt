@@ -37,10 +37,6 @@ class HomeFragment : BaseVmVBFragment<HomeViewModel, FragmentHomeLayoutBinding>(
 
     }
 
-    override fun useShimmerLayout(): Boolean {
-        return true
-    }
-
 }
 
 

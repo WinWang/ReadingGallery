@@ -2,6 +2,7 @@ package com.winwang.mvvm.loadsir;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
 import com.kingja.loadsir.callback.Callback;
 import com.winwang.mvvm.R;
@@ -21,9 +22,6 @@ public class TimeoutCallback extends Callback {
         return R.layout.layout_timeout;
     }
 
-    @Override
-    protected boolean onReloadEvent(Context context, View view) {
-        return false;
-    }
+
 
 }

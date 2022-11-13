@@ -12,6 +12,7 @@ import com.winwang.mvvm.ext.showToast
 import kotlinx.coroutines.*
 import java.net.ConnectException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 
 typealias Block<T> = suspend () -> T     //可以在别名类指定类型，例如suspend CoroutineScope.() -> Unit -----但是此时的block不需要调用invoke 了，直接block（）
@@ -23,7 +24,7 @@ typealias EmitBlock<T> = suspend LiveDataScope<T>.() -> T
  *Created by WinWang on 2020/6/8
  *Description->
  */
-open class BaseViewModel : ViewModel() , MyLifecycleObserver {
+open class BaseViewModel : ViewModel(), MyLifecycleObserver {
 
     val loginStatusInvalid: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -121,55 +122,60 @@ open class BaseViewModel : ViewModel() , MyLifecycleObserver {
      */
     private fun onError(e: Exception) {
         when (e) {
-            is ConnectException -> {
-                // 连接失败
-                BaseApplication.instance.showToast(
-                    BaseApplication.instance.getString(R.string.network_connection_failed)
-                )
-                viewStatus.value = ViewStatusEnum.NETWORKERROR
-            }
-            is SocketTimeoutException -> {
-                // 请求超时
-                BaseApplication.instance.showToast(
-                    BaseApplication.instance.getString(R.string.network_request_timeout)
-                )
-                viewStatus.value = ViewStatusEnum.NETWORKERROR
-            }
             is JsonParseException -> {
                 // 数据解析错误
                 BaseApplication.instance.showToast(
                     BaseApplication.instance.getString(R.string.api_data_parse_error)
                 )
-                viewStatus.value = ViewStatusEnum.ERROR
+                showDataError()
             }
-            is NetworkOnMainThreadException -> {
+            is ConnectException,
+            is SocketTimeoutException,
+            is NetworkOnMainThreadException,
+            is UnknownHostException -> {
                 BaseApplication.instance.showToast(
                     BaseApplication.instance.getString(R.string.network_thread_exception)
                 )
-                viewStatus.value = ViewStatusEnum.ERROR
+                showNetWorkError()
             }
             else -> {
                 // 其他错误
                 e.message?.let { BaseApplication.instance.showToast(it) }
-                viewStatus.value = ViewStatusEnum.ERROR
+                showDataError()
             }
         }
     }
 
+    fun showNetWorkError() {
+        viewStatus.postValue(ViewStatusEnum.NETWORKERROR)
+    }
+
+    fun showDataError() {
+        viewStatus.postValue(ViewStatusEnum.ERROR)
+    }
+
+    fun showEmpty() {
+        viewStatus.postValue(ViewStatusEnum.EMPTY)
+    }
+
+    fun showSuccess() {
+        viewStatus.postValue(ViewStatusEnum.SUCCESS)
+    }
+
     override fun onCreate(source: LifecycleOwner) {
-        LogUtils.dTag("ViewModel","onCreate>>>>")
+        LogUtils.dTag("ViewModel", "onCreate>>>>")
     }
 
     override fun onPause(source: LifecycleOwner) {
-        LogUtils.dTag("ViewModel","onPause>>>>")
+        LogUtils.dTag("ViewModel", "onPause>>>>")
     }
 
     override fun onResume(source: LifecycleOwner) {
-        LogUtils.dTag("ViewModel","onResume>>>>")
+        LogUtils.dTag("ViewModel", "onResume>>>>")
     }
 
     override fun onDestroy(source: LifecycleOwner) {
-        LogUtils.dTag("ViewModel","onDestroy>>>>")
+        LogUtils.dTag("ViewModel", "onDestroy>>>>")
     }
 
 
