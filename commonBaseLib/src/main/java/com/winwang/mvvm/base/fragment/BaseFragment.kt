@@ -118,7 +118,6 @@ abstract class BaseFragment : Fragment(), IView {
         }
         if (useShimmerLayout()) {
             mLoadService?.loadLayout?.setupCallback(ShimmerCallback(shimmerLayout(), shimmerList()))
-
             mLoadService?.showCallback(ShimmerCallback::class.java)
         }
     }

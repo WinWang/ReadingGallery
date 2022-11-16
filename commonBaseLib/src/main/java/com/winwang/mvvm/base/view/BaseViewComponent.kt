@@ -7,6 +7,7 @@ import android.view.ContextThemeWrapper
 import android.widget.FrameLayout
 import androidx.lifecycle.*
 import com.blankj.utilcode.util.LogUtils
+import com.winwang.mvvm.R
 import com.winwang.mvvm.base.BaseApplication
 import com.winwang.mvvm.base.lifecycle.MyLifecycleObserver
 import com.winwang.mvvm.base.viewmodel.BaseViewModel
@@ -20,7 +21,7 @@ import kotlin.reflect.KClass
 
 /**
  *Created by WinWang on 2020/8/25
-*Description->具有能感知生命周期和获取viewmodel的控件，如果泛型和Fragment或者Activity里面的Viewmodel相同，
+ *Description->具有能感知生命周期和获取viewmodel的控件，如果泛型和Fragment或者Activity里面的Viewmodel相同，
  *             默认获取的就是外层的Fragment或者Activity的Viewmode
  * Tips-------->解决防止内部的viewmodel和外部的viewmodel相同的情况，可以通过koin的Quolifier来处理，在module中
  *              通过name注入不同的viewmode的别名来实现
@@ -36,12 +37,15 @@ abstract class BaseViewComponent<VM : BaseViewModel> @JvmOverloads constructor(
 
     private lateinit var loadingDialog: LoadDialog
 
+    open fun useShimmerLayout(): Boolean = false
+
+    open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
+
     init {
         if (getLayoutId() > -1) {
             inflate(context, getLayoutId(), this)
         }
     }
-
 
     protected lateinit var lifecycleOwner: LifecycleOwner
     private lateinit var viewModelStoreOwner: ViewModelStoreOwner
@@ -88,29 +92,6 @@ abstract class BaseViewComponent<VM : BaseViewModel> @JvmOverloads constructor(
         lifecycleOwner.lifecycle.addObserver(this)
         LogUtils.d("viewInit>>>>>>>>>>")
 
-    }
-
-
-    @Deprecated(message = "通过ViewTreeLifecycleOwner实现")
-    fun getLifeOwner(): LifecycleOwner? {
-        if (mContext is LifecycleOwner) {
-            return mContext as LifecycleOwner
-        } else if (mContext is ContextThemeWrapper) {
-            return (mContext as ContextThemeWrapper).baseContext as LifecycleOwner
-        } else {
-            return null
-        }
-    }
-
-    @Deprecated(message = "通过ViewTreeViewModelOwner实现")
-    fun getViewModelOwner(): ViewModelStoreOwner? {
-        if (mContext is LifecycleOwner) {
-            return mContext as ViewModelStoreOwner
-        } else if (mContext is ContextThemeWrapper) {
-            return (mContext as ContextThemeWrapper).baseContext as ViewModelStoreOwner
-        } else {
-            return null
-        }
     }
 
 

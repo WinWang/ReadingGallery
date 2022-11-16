@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blankj.utilcode.util.LogUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.winwang.homemodule.R
@@ -25,6 +26,7 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        LogUtils.d("执行测试页面》》》》》》》》")
         mTopBar?.setTitle("测试")
         setLoadSir(mBinding.contentLayout)
         for (index in 1..100) {
@@ -38,7 +40,8 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
         mBinding.btSendEvent.setOnClickListener {
             EventBus.getDefault().postSticky(TestEvent("123123"))
         }
-
+        mBinding.testShimmerLayout.init()
+        mBinding.testShimmerLayout1.init()
         viewLifecycleOwner.lifecycleScope.launch {
             delay(10000)
             showSuccess()
@@ -67,7 +70,7 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
 
 }
 
-public class TestAdapter :
+class TestAdapter :
     BaseQuickAdapter<DataBean, BaseViewHolder>(layoutResId = R.layout.item_test_layout) {
 
     override fun convert(holder: BaseViewHolder, item: DataBean) {

@@ -100,7 +100,7 @@ abstract class BaseActivity : AppCompatActivity(), IView {
 
     protected open fun useEventBus(): Boolean = false
 
-    open fun useShimmerLayout(): Boolean = true
+    open fun useShimmerLayout(): Boolean = false
 
     open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
 

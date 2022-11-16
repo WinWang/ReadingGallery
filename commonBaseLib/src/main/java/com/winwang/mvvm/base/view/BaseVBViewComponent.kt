@@ -9,16 +9,21 @@ import android.widget.FrameLayout
 import androidx.lifecycle.*
 import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.LogUtils
+import com.kingja.loadsir.core.LoadSir
+import com.winwang.mvvm.R
 import com.winwang.mvvm.base.BaseApplication
 import com.winwang.mvvm.base.lifecycle.MyLifecycleObserver
 import com.winwang.mvvm.base.viewmodel.BaseViewModel
+import com.winwang.mvvm.enums.ViewStatusEnum
 import com.winwang.mvvm.ext.showToast
+import com.winwang.mvvm.loadsir.*
 import com.winwang.mvvm.widget.LoadDialog
 import org.greenrobot.eventbus.EventBus
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.qualifier.qualifier
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
+
 
 /**
  *Created by WinWang on 2020/8/25
@@ -39,6 +44,19 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     private lateinit var loadingDialog: LoadDialog
     lateinit var mBinding: VB
     private var hasInit = false
+    private val mLoadService by lazy {
+        val loadSir = LoadSir.Builder()
+            .addCallback(TimeoutCallback())
+            .addCallback(ShimmerCallback(shimmerLayout(), shimmerList()))
+            .addCallback(ErrorCallback())
+            .addCallback(CustomCallback())
+            .addCallback(LoadingCallback())
+            .setDefaultCallback(if (useShimmerLayout()) ShimmerCallback::class.java else LoadingCallback::class.java)
+            .build()
+        loadSir.register(this) {
+            loadNet()
+        }
+    }
 
     init {
         val type = javaClass.genericSuperclass
@@ -49,13 +67,29 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
             mBinding = method.invoke(null, LayoutInflater.from(context)) as VB
         }
         removeAllViews()
-        addView(mBinding?.root)
+        addView(mBinding.root)
     }
 
 
     protected lateinit var lifecycleOwner: LifecycleOwner
     private lateinit var viewModelStoreOwner: ViewModelStoreOwner
     open var mContext: Context = context
+
+    /**
+     * 是否开启骨架屏
+     */
+    open fun useShimmerLayout(): Boolean = false
+
+    /**
+     * 骨架屏是否是列表
+     */
+    open fun shimmerList(): Boolean = false
+
+    /**
+     * 骨架屏布局---shimmerList返回true代表骨架屏的item，shimmerList返回false代表骨架屏view的布局
+     */
+    open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
+
 
     protected val mViewModel: VM by lazy {
         if (isDIViewModel()) {
@@ -104,29 +138,6 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     }
 
 
-    @Deprecated(message = "通过ViewTreeLifecycleOwner实现")
-    fun getLifeOwner(): LifecycleOwner? {
-        if (mContext is LifecycleOwner) {
-            return mContext as LifecycleOwner
-        } else if (mContext is ContextThemeWrapper) {
-            return (mContext as ContextThemeWrapper).baseContext as LifecycleOwner
-        } else {
-            return null
-        }
-    }
-
-    @Deprecated(message = "通过ViewTreeViewModelOwner实现")
-    fun getViewModelOwner(): ViewModelStoreOwner? {
-        if (mContext is LifecycleOwner) {
-            return mContext as ViewModelStoreOwner
-        } else if (mContext is ContextThemeWrapper) {
-            return (mContext as ContextThemeWrapper).baseContext as ViewModelStoreOwner
-        } else {
-            return null
-        }
-    }
-
-
     override fun onDestroy(source: LifecycleOwner) {
         if (useEventBus()) {
             EventBus.getDefault().unregister(this)
@@ -139,10 +150,39 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
         if (useEventBus()) {
             EventBus.getDefault().register(this)
         }
+        if (useShimmerLayout()) {
+            mLoadService.loadLayout
+        }
         initView()
         initViewModel()
+        initStateObserve()
         initObserve()
         initData()
+    }
+
+    private fun initStateObserve() {
+        if (useShimmerLayout()) {
+            mViewModel.viewStatus.observe(lifecycleOwner, Observer {
+                when (it) {
+                    ViewStatusEnum.SUCCESS -> {
+                        showSuccess()
+                    }
+
+                    ViewStatusEnum.ERROR -> {
+                        showError()
+                    }
+
+                    ViewStatusEnum.EMPTY -> {
+                        showEmpty()
+                    }
+
+                    ViewStatusEnum.NETWORKERROR -> {
+                        showTimeOut()
+                    }
+
+                }
+            })
+        }
     }
 
     override fun onPause(source: LifecycleOwner) {
@@ -175,6 +215,10 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     open fun initData() {
     }
 
+    open fun loadNet() {
+
+    }
+
     open fun getLayoutId(): Int = -1
 
     private fun initViewModel() {
@@ -202,6 +246,26 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
         if (this::loadingDialog.isInitialized) {
             loadingDialog.hideLoading()
         }
+    }
+
+    fun showError() {
+        mLoadService?.showCallback(ErrorCallback::class.java)
+    }
+
+    fun showSuccess() {
+        mLoadService?.showSuccess()
+    }
+
+    fun showEmpty() {
+        mLoadService?.showCallback(EmptyCallback::class.java)
+    }
+
+    fun showLoading() {
+        mLoadService?.showCallback(LoadingCallback::class.java)
+    }
+
+    fun showTimeOut() {
+        mLoadService?.showCallback(TimeoutCallback::class.java)
     }
 
 

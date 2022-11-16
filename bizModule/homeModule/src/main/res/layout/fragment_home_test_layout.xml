@@ -30,6 +30,16 @@
             android:text="发送事件"
             android:textSize="26pt" />
 
+        <com.winwang.homemodule.business.ui.viewcomponent.TestShimmerViewComponent
+            android:id="@+id/test_shimmerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.winwang.homemodule.business.ui.viewcomponent.TestShimmer1ViewComponent
+            android:id="@+id/test_shimmerLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

@@ -11,6 +11,6 @@
         android:layout_height="200pt"
         android:layout_marginTop="10pt"
         android:layout_marginBottom="10pt"
-        android:background="@color/qmui_config_color_red" />
+        android:background="@color/_333" />
 
 </com.facebook.shimmer.ShimmerFrameLayout>
