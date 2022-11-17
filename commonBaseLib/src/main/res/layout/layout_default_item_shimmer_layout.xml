@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:shimmer_auto_start="true">
+    app:shimmer_auto_start="true"
+    app:shimmer_base_alpha="0.2"
+    app:shimmer_highlight_alpha="0.4">
 
     <View
         android:layout_width="match_parent"
