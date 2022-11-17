@@ -15,7 +15,7 @@ import com.winwang.mvvm.loadsir.adapter.DefaultShimmerAdapter
 class ShimmerCallback(var shimmerLayout: Int = R.layout.layout_default_item_shimmer_layout, var showList: Boolean = true) : Callback() {
 
 
-    private val shimmerList = arrayListOf<Int>(0, 1, 2, 3, 4, 5, 7, 8)
+    private val shimmerList = arrayListOf<Int>(0, 1, 2, 3, 4, 5, 7)
 
     override fun onCreateView(): Int {
         return if (showList) R.layout.layout_shimmer_layout else shimmerLayout
@@ -35,6 +35,7 @@ class ShimmerCallback(var shimmerLayout: Int = R.layout.layout_default_item_shim
         if (showList) {
             val recyclerView = view?.findViewById<RecyclerView>(R.id.rv_shimmer)
             val defaultShimmerAdapter = DefaultShimmerAdapter(shimmerLayout)
+            recyclerView?.recycledViewPool?.setMaxRecycledViews(0, 0)
             defaultShimmerAdapter.setNewInstance(shimmerList)
             context?.let {
                 recyclerView?.run {
