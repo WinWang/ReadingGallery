@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.LogUtils
 import com.winwang.homemodule.business.ui.fragment.DataBean
 import com.winwang.homemodule.databinding.ViewTestViewcomponentBinding
 import com.winwang.mvvm.base.view.BaseVBViewComponent
 import com.winwang.mvvm.base.viewmodel.BaseViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -41,6 +44,10 @@ class TestShimmerViewComponent @JvmOverloads constructor(
     override fun onCreate(source: LifecycleOwner) {
         super.onCreate(source)
         LogUtils.d(">>>>>>>>>>>>初始化")
+        lifecycleOwner.lifecycleScope.launch {
+            delay(10000)
+            showSuccess()
+        }
     }
 
     override fun onDestroy(source: LifecycleOwner) {

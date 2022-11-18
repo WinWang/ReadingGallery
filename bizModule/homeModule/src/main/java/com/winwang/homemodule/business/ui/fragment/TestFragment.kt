@@ -43,7 +43,7 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
         mBinding.testShimmerLayout.init()
         mBinding.testShimmerLayout1.init()
         viewLifecycleOwner.lifecycleScope.launch {
-            delay(10000)
+            delay(5000)
             showSuccess()
         }
     }
@@ -67,6 +67,9 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
     override fun shimmerList(): Boolean {
         return true
     }
+
+    override fun shimmerListSize() = 5
+
 
 }
 

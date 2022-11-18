@@ -102,7 +102,20 @@ abstract class BaseActivity : AppCompatActivity(), IView {
 
     open fun useShimmerLayout(): Boolean = false
 
+    /**
+     * 骨架屏布局文件
+     */
     open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
+
+    /**
+     * 骨架屏是否是列表骨架屏，此时的shimmerLayout代表Rv的item布局，如果不是列表，就是普通占位的layout
+     */
+    open fun shimmerList(): Boolean = true
+
+    /**
+     * 列表类骨架屏长度
+     */
+    open fun shimmerListSize(): Int = 8
 
     open fun initViewData() {
 
@@ -123,7 +136,7 @@ abstract class BaseActivity : AppCompatActivity(), IView {
             loadNet()
         }
         if (useShimmerLayout()) {
-            mLoadService?.loadLayout?.addCallback(ShimmerCallback(shimmerLayout()))
+            mLoadService?.loadLayout?.addCallback(ShimmerCallback(shimmerLayout(), shimmerList(), shimmerListSize()))
             mLoadService?.showCallback(ShimmerCallback::class.java)
         }
 

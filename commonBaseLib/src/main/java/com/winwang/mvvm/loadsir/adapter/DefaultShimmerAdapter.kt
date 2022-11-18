@@ -11,6 +11,5 @@ import com.winwang.mvvm.R
 class DefaultShimmerAdapter(layoutRes: Int? = R.layout.layout_default_item_shimmer_layout) :
     BaseQuickAdapter<Int, BaseViewHolder>(layoutResId = layoutRes ?: R.layout.layout_default_item_shimmer_layout) {
     override fun convert(holder: BaseViewHolder, item: Int) {
-        holder.setIsRecyclable(false)
     }
 }

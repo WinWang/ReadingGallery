@@ -1,7 +1,6 @@
 package com.winwang.mvvm.base.fragment
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -105,6 +104,8 @@ abstract class BaseFragment : Fragment(), IView {
 
     open fun shimmerList(): Boolean = true
 
+    open fun shimmerListSize(): Int = 8
+
     open fun shimmerLayout() = R.layout.layout_default_item_shimmer_layout
 
     protected open fun useEventBus(): Boolean = false
@@ -117,7 +118,7 @@ abstract class BaseFragment : Fragment(), IView {
             loadNet()
         }
         if (useShimmerLayout()) {
-            mLoadService?.loadLayout?.setupCallback(ShimmerCallback(shimmerLayout(), shimmerList()))
+            mLoadService?.loadLayout?.setupCallback(ShimmerCallback(shimmerLayout(), shimmerList(), shimmerListSize()))
             mLoadService?.showCallback(ShimmerCallback::class.java)
         }
     }

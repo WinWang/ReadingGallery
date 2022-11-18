@@ -12,10 +12,11 @@ import com.winwang.mvvm.loadsir.adapter.DefaultShimmerAdapter
  * Created by WinWang on 2022/11/10
  * Description:默认的骨架占位
  **/
-class ShimmerCallback(var shimmerLayout: Int = R.layout.layout_default_item_shimmer_layout, var showList: Boolean = true) : Callback() {
-
-
-    private val shimmerList = arrayListOf<Int>(0, 1, 2, 3, 4, 5, 7)
+class ShimmerCallback(
+    var shimmerLayout: Int = R.layout.layout_default_item_shimmer_layout, //骨架屏填充的item
+    var showList: Boolean = true, //是否是列表类骨架屏
+    private var shimmerListSize: Int = 8 //骨架屏列表默认的长度
+) : Callback() {
 
     override fun onCreateView(): Int {
         return if (showList) R.layout.layout_shimmer_layout else shimmerLayout
@@ -35,8 +36,11 @@ class ShimmerCallback(var shimmerLayout: Int = R.layout.layout_default_item_shim
         if (showList) {
             val recyclerView = view?.findViewById<RecyclerView>(R.id.rv_shimmer)
             val defaultShimmerAdapter = DefaultShimmerAdapter(shimmerLayout)
-            recyclerView?.recycledViewPool?.setMaxRecycledViews(0, 0)
-            defaultShimmerAdapter.setNewInstance(shimmerList)
+            val shimmerDataList = arrayListOf<Int>()
+            for (index in 0 until shimmerListSize) {
+                shimmerDataList.add(index)
+            }
+            defaultShimmerAdapter.setNewInstance(shimmerDataList)
             context?.let {
                 recyclerView?.run {
                     layoutManager = LinearLayoutManager(it)
