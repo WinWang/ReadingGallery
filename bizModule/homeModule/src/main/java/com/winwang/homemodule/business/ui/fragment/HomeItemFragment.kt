@@ -42,9 +42,11 @@ class HomeItemFragment : BaseVmVBFragment<HomeItemViewModel, FragmentHomeItemLay
 
     override fun useLoadSir() = true
 
+    override fun useShimmerLayout() = true
+
     override fun initView() {
         super.initView()
-        mBinding.refreshLayout.setColorSchemeColors(resources.getColor(R.color.colorAccent))
+        mBinding.refreshLayout.setColorSchemeColors(resources.getColor(com.winwang.mvvm.R.color.colorAccent))
         mBinding.refreshLayout.setOnRefreshListener(this)
         adapter = HomeItemAdpater(dataList).apply {
             setGridSpanSizeLookup { gridLayoutManager, viewType, position ->

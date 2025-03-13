@@ -22,6 +22,11 @@ class HomeProvider : IHomeProvider {
     override fun getTestFragment() =
         TestFragment()
 
+    override fun getPagingFragment(): Fragment {
+        TODO("Not yet implemented")
+    }
+
+
     override fun init(context: Context?) {
 
     }

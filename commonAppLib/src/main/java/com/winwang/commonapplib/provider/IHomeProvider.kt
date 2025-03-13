@@ -15,4 +15,11 @@ interface IHomeProvider : IProvider {
      * 获取测试Fragment
      */
     fun getTestFragment(): Fragment
+
+
+    /**
+     * 获取Paging测试Fragment
+     */
+    fun getPagingFragment(): Fragment
+
 }

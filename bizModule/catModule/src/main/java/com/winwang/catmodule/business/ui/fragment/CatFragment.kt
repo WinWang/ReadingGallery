@@ -28,7 +28,7 @@ class CatFragment : BaseVmVBFragment<CatViewModel, FragmentCatBinding>(),
     override fun initView() {
         super.initView()
         mTopBar?.setTitle("分类")
-        mBinding.refreshLayout.setColorSchemeColors(resources.getColor(R.color.colorAccent))
+        mBinding.refreshLayout.setColorSchemeColors(resources.getColor(com.winwang.mvvm.R.color.colorAccent))
         mBinding.refreshLayout.setOnRefreshListener(this)
         mAdapter = BookCatAdapter(dataList).apply {
             setGridSpanSizeLookup { gridLayoutManager, viewType, position ->

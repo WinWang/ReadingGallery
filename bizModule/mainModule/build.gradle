@@ -15,6 +15,7 @@ kapt {
 }
 
 android {
+    namespace 'com.winwang.main'
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
     defaultConfig {
@@ -25,8 +26,6 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -37,21 +36,18 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_17
     }
 
-    //databinding启用
-//    dataBinding {
-//        enabled = true
-//    }
-
-    //viewbinding启用
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -59,5 +55,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':commonAppLib')
     kapt rootProject.ext.dependencies["arouter-compiler"]
-    kapt rootProject.ext.dependencies["applifecycle-compiler"]
+//    kapt rootProject.ext.dependencies["applifecycle-compiler"]
 }

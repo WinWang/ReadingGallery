@@ -45,7 +45,7 @@ class CatTypeListActivity :
     override fun initView() {
         super.initView()
         mTopBar?.setTitle(name)
-        mBinding.viewContentLoadsir.setColorSchemeColors(resources.getColor(R.color.colorAccent))
+        mBinding.viewContentLoadsir.setColorSchemeColors(resources.getColor(com.winwang.mvvm.R.color.colorAccent))
         mBinding.viewContentLoadsir.setOnRefreshListener(this)
         mBinding.rvTypeList.adapter = mAdapter
         mAdapter.setOnItemClickListener(this)

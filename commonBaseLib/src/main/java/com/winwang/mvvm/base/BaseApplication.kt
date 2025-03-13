@@ -3,7 +3,6 @@ package com.winwang.mvvm.base
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import coil.Coil
 import coil.ImageLoader
 import coil.ImageLoaderFactory
 import com.alibaba.android.arouter.launcher.ARouter
@@ -14,7 +13,11 @@ import com.winwang.mvvm.BuildConfig
 import com.winwang.mvvm.R
 import com.winwang.mvvm.common.ActivityLifecycleCallbacksAdapter
 import com.winwang.mvvm.common.ActivityManager
-import com.winwang.mvvm.loadsir.*
+import com.winwang.mvvm.loadsir.CustomCallback
+import com.winwang.mvvm.loadsir.EmptyCallback
+import com.winwang.mvvm.loadsir.ErrorCallback
+import com.winwang.mvvm.loadsir.LoadingCallback
+import com.winwang.mvvm.loadsir.TimeoutCallback
 import me.jessyan.autosize.AutoSizeConfig
 import me.jessyan.autosize.unit.Subunits
 

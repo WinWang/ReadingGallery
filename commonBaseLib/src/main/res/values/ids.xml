@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+    <item name="view_original_height" type="id" />
+    <item name="view_content_loadsir" type="id" />
+    <item name="base_component_view" type="id" />
+</resources>

@@ -15,6 +15,7 @@ kapt {
 }
 
 android {
+    namespace 'com.winwang.detailmodule'
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
     defaultConfig {
@@ -25,7 +26,6 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     sourceSets {
@@ -50,23 +50,19 @@ android {
 //        }
 //    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_17
     }
 
-    //databinding启用
-//    dataBinding {
-//        enabled = true
-//    }
-
-    //viewbinding启用
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+        buildConfig = true
     }
-
 }
 
 dependencies {
@@ -74,7 +70,7 @@ dependencies {
     api project(':commonAppLib')
     implementation project(':bizModule:homeModule-api')
     kapt rootProject.ext.dependencies["arouter-compiler"]
-    kapt rootProject.ext.dependencies["applifecycle-compiler"]
+//    kapt rootProject.ext.dependencies["applifecycle-compiler"]
     implementation rootProject.ext.dependencies["pinedSection"]
     implementation project(path: ':Frame:LibFlycoTabLayout')
 }

@@ -27,7 +27,7 @@
             android:id="@+id/tv_status_home_horizental"
             android:layout_width="match_parent"
             android:layout_height="40pt"
-            android:background="@color/home_color_64_666"
+            android:background="@color/colorAccent"
             android:gravity="center"
             android:text="哈哈"
             android:textColor="@color/white"
@@ -43,7 +43,7 @@
             android:gravity="center"
             android:singleLine="true"
             android:text="魂武双休"
-            android:textColor="@color/home_color_333"
+            android:textColor="@color/black"
             android:textSize="25pt"
             app:layout_constraintBottom_toBottomOf="parent" />
 

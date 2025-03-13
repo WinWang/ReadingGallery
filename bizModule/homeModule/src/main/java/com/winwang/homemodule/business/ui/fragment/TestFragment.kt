@@ -43,7 +43,7 @@ class TestFragment : BaseVBFragment<FragmentHomeTestLayoutBinding>() {
         mBinding.testShimmerLayout.init()
         mBinding.testShimmerLayout1.init()
         viewLifecycleOwner.lifecycleScope.launch {
-            delay(5000)
+            delay(1000)
             showSuccess()
         }
     }
@@ -81,10 +81,10 @@ class TestAdapter :
         val lifecycleOwner = recyclerView.findViewTreeLifecycleOwner()
         val viewModelStoreOwner = recyclerView.findViewTreeViewModelStoreOwner()
         lifecycleOwner?.run {
-            ViewTreeLifecycleOwner.set(itemView, this)
+            itemView.setViewTreeLifecycleOwner(this)
         }
         viewModelStoreOwner?.run {
-            ViewTreeViewModelStoreOwner.set(itemView, this)
+            itemView.setViewTreeViewModelStoreOwner(this)
         }
         val view = holder.getView<TestViewComponent>(R.id.viewTest)
         view.init()

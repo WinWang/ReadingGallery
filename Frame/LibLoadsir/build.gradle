@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'maven-publish'
+apply from: '../../conf.gradle'
+
+group = 'com.github.WinWang'
+
+android {
+    namespace 'com.kingja.loadsir'
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation rootProject.ext.dependencies["appcompat"]
+    implementation rootProject.ext.dependencies["appcompat"]
+
+}
+
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.WinWang'
+//                artifactId = 'LibLoadsir'
+//                version = project.libVersion
+//            }
+//        }
+//    }
+//}
+

@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20pt"
         android:text="精品推荐"
-        android:textColor="@color/home_color_333"
+        android:textColor="@color/colorAccent"
         android:textSize="30pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

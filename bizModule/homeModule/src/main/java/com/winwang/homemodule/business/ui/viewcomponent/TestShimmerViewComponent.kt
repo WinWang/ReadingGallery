@@ -1,19 +1,16 @@
 package com.winwang.homemodule.business.ui.viewcomponent
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.LogUtils
 import com.winwang.homemodule.business.ui.fragment.DataBean
 import com.winwang.homemodule.databinding.ViewTestViewcomponentBinding
 import com.winwang.mvvm.base.view.BaseVBViewComponent
-import com.winwang.mvvm.base.viewmodel.BaseViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 
 /**
@@ -54,6 +51,43 @@ class TestShimmerViewComponent @JvmOverloads constructor(
         super.onDestroy(source)
         LogUtils.e("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>销毁")
     }
+
+    override fun onWindowVisibilityChanged(visibility: Int) {
+        super.onWindowVisibilityChanged(visibility)
+        if (visibility == View.VISIBLE) {
+            LogUtils.d("onWindowVisibilityChanged>>>>可见")
+        } else {
+            LogUtils.d("onWindowVisibilityChanged>>>>不可见")
+        }
+    }
+
+    override fun onWindowFocusChanged(hasWindowFocus: Boolean) {
+        super.onWindowFocusChanged(hasWindowFocus)
+        if (hasWindowFocus) {
+            LogUtils.d("onWindowFocusChanged>>>>可见")
+        } else {
+            LogUtils.d("onWindowFocusChanged>>>>不可见")
+        }
+    }
+
+    override fun onWindowSystemUiVisibilityChanged(visible: Int) {
+        super.onWindowSystemUiVisibilityChanged(visible)
+        if (visible == View.VISIBLE) {
+            LogUtils.d("onWindowSystemUiVisibilityChanged>>>>可见")
+        } else {
+            LogUtils.d("onWindowSystemUiVisibilityChanged>>>>不可见")
+        }
+    }
+
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+        if (visibility == View.VISIBLE) {
+            LogUtils.d("onVisibilityChanged>>>>可见")
+        } else {
+            LogUtils.d("onVisibilityChanged>>>>不可见")
+        }
+    }
+
 
 }
 

@@ -7,9 +7,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewTreeLifecycleOwner
-import androidx.lifecycle.ViewTreeViewModelStoreOwner
-import androidx.savedstate.ViewTreeSavedStateRegistryOwner
+import androidx.lifecycle.setViewTreeLifecycleOwner
+import androidx.lifecycle.setViewTreeViewModelStoreOwner
+import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ToastUtils
@@ -66,9 +66,9 @@ abstract class BaseActivity : AppCompatActivity(), IView {
     fun initViewTreeOwners() {
         // Set the view tree owners before setting the content view so that the inflation process
         // and attach listeners will see them already present
-        ViewTreeLifecycleOwner.set(window.decorView, this)
-        ViewTreeViewModelStoreOwner.set(window.decorView, this)
-        ViewTreeSavedStateRegistryOwner.set(window.decorView, this)
+        window.decorView.setViewTreeLifecycleOwner(this)
+        window.decorView.setViewTreeViewModelStoreOwner(this)
+        window.decorView.setViewTreeSavedStateRegistryOwner(this)
     }
 
 

@@ -142,12 +142,14 @@ rootProject.name = "ReadingGallery"
 
 include ':app'
 include ':Frame:LibFlycoTabLayout'
+include ':Frame:LibLoadsir'
 include ':bizModule:detailModule'
 include ':bizModule:mainModule'
 include ':bizModule:catModule'
 include ':commonAppLib'
 include ':commonBaseLib'
-includeWithApi(':bizModule:homeModule')
-//include ':bizModule:homeModule'
-//include ':bizModule:homeModule-api'
+//includeWithApi(':bizModule:homeModule')
+include ':bizModule:homeModule'
+include ':bizModule:homeModule-api'
+
 

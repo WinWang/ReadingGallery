@@ -3,7 +3,7 @@
 apply from: "conf.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.5.31'
+    ext.kotlin_version = '2.0.20'
     repositories {
         google()
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
@@ -17,7 +17,7 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:8.6.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //加载插件applifecycle
         classpath 'com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-plugin:1.0.3'

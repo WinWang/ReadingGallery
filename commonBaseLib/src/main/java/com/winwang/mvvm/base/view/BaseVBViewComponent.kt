@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import androidx.lifecycle.*
 import androidx.viewbinding.ViewBinding
@@ -45,6 +46,7 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     lateinit var mBinding: VB
     private var hasInit = false
     private val mLoadService by lazy {
+        val viewComponent = findViewById<View>(R.id.base_component_view)
         val loadSir = LoadSir.Builder()
             .addCallback(TimeoutCallback())
             .addCallback(ShimmerCallback(shimmerLayout(), shimmerList()))
@@ -53,7 +55,7 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
             .addCallback(LoadingCallback())
             .setDefaultCallback(if (useShimmerLayout()) ShimmerCallback::class.java else LoadingCallback::class.java)
             .build()
-        loadSir.register(this) {
+        loadSir.register(viewComponent ?: this) {
             loadNet()
         }
     }
@@ -74,6 +76,7 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     protected lateinit var lifecycleOwner: LifecycleOwner
     private lateinit var viewModelStoreOwner: ViewModelStoreOwner
     open var mContext: Context = context
+
 
     /**
      * 是否开启骨架屏
@@ -151,6 +154,7 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
             EventBus.getDefault().register(this)
         }
         if (useShimmerLayout()) {
+            findViewById<View>(R.id.base_component_view).visibility = GONE
             mLoadService.loadLayout
         }
         initView()
@@ -165,6 +169,7 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
             mViewModel.viewStatus.observe(lifecycleOwner, Observer {
                 when (it) {
                     ViewStatusEnum.SUCCESS -> {
+
                         showSuccess()
                     }
 
@@ -253,18 +258,26 @@ abstract class BaseVBViewComponent<VM : BaseViewModel, VB : ViewBinding> @JvmOve
     }
 
     fun showSuccess() {
+//        mBinding.root.visibility = VISIBLE
+        findViewById<View>(R.id.base_component_view).visibility = VISIBLE
         mLoadService?.showSuccess()
     }
 
     fun showEmpty() {
+//        mBinding.root.visibility = VISIBLE
+        findViewById<View>(R.id.base_component_view).visibility = VISIBLE
         mLoadService?.showCallback(EmptyCallback::class.java)
     }
 
     fun showLoading() {
+//        mBinding.root.visibility = VISIBLE
+        findViewById<View>(R.id.base_component_view).visibility = VISIBLE
         mLoadService?.showCallback(LoadingCallback::class.java)
     }
 
     fun showTimeOut() {
+//        mBinding.root.visibility = VISIBLE
+        findViewById<View>(R.id.base_component_view).visibility = VISIBLE
         mLoadService?.showCallback(TimeoutCallback::class.java)
     }
 

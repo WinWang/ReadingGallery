@@ -3,20 +3,31 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+    namespace 'com.winwang.mvvm'
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
 
     defaultConfig {
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         kotlinOptions {
-            jvmTarget = 1.8
+            jvmTarget = JavaVersion.VERSION_17
         }
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
     }
 
     buildTypes {
@@ -46,7 +57,7 @@ dependencies {
     api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
     api rootProject.ext.dependencies["okhttp3"]
     api rootProject.ext.dependencies["QMUI"]
-    api rootProject.ext.dependencies["loadSir"]
+//    api rootProject.ext.dependencies["loadSir"]
     api rootProject.ext.dependencies["avi-loading"]
     api rootProject.ext.dependencies["lifecycle"]
     api rootProject.ext.dependencies["lifecycle-viewmodel"]
@@ -55,7 +66,7 @@ dependencies {
     api rootProject.ext.dependencies["lifecycle-process"]
     api rootProject.ext.dependencies["activity"]
     api rootProject.ext.dependencies["fragment"]
-    kapt rootProject.ext.dependencies["lifecycle-compiler"]
+//    kapt rootProject.ext.dependencies["lifecycle-compiler"]
 
     api rootProject.ext.dependencies["core-ktx"]
     api rootProject.ext.dependencies["avi-loading"]
@@ -63,9 +74,11 @@ dependencies {
     api rootProject.ext.dependencies["autosize"]
     api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["EventBus"]
-    api rootProject.ext.dependencies["glide"]
-    api rootProject.ext.dependencies["glide-transformation"]
-    kapt(rootProject.ext.dependencies["glide"])
+    api 'androidx.lifecycle:lifecycle-runtime:2.3.1'
+    api 'androidx.lifecycle:lifecycle-viewmodel:2.3.1'
+//    api rootProject.ext.dependencies["glide"]
+//    api rootProject.ext.dependencies["glide-transformation"]
+//    kapt(rootProject.ext.dependencies["glide"])
     debugApi rootProject.ext.dependencies["leak-canary"]
 
     api rootProject.ext.dependencies["mmkv"]
@@ -75,8 +88,7 @@ dependencies {
     api rootProject.ext.dependencies["BRVAH"]
     api rootProject.ext.dependencies["COIL"]
     api rootProject.ext.dependencies["shimmer"]
-
-
+    api project(path: ':Frame:LibLoadsir')
 
 
 }
