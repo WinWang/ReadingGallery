@@ -19,7 +19,11 @@ import com.qmuiteam.qmui.widget.QMUITopBar
 import com.winwang.mvvm.R
 import com.winwang.mvvm.base.IView
 import com.winwang.mvvm.base.view.BaseViewComponent
-import com.winwang.mvvm.loadsir.*
+import com.winwang.mvvm.loadsir.EmptyCallback
+import com.winwang.mvvm.loadsir.ErrorCallback
+import com.winwang.mvvm.loadsir.LoadingCallback
+import com.winwang.mvvm.loadsir.ShimmerCallback
+import com.winwang.mvvm.loadsir.TimeoutCallback
 import com.winwang.mvvm.widget.LoadDialog
 import me.jessyan.autosize.AutoSize
 import org.greenrobot.eventbus.EventBus
@@ -136,22 +140,27 @@ abstract class BaseActivity : AppCompatActivity(), IView {
             loadNet()
         }
         if (useShimmerLayout()) {
-            mLoadService?.loadLayout?.addCallback(ShimmerCallback(shimmerLayout(), shimmerList(), shimmerListSize()))
+            mLoadService?.loadLayout?.addCallback(
+                ShimmerCallback(
+                    shimmerLayout(),
+                    shimmerList(),
+                    shimmerListSize()
+                )
+            )
             mLoadService?.showCallback(ShimmerCallback::class.java)
         }
 
     }
 
     private fun initViewComponent(it: View) {
-        it?.run {
+        it.run {
             if (this is ViewGroup) {
-                var vp: ViewGroup = it as ViewGroup
+                val vp: ViewGroup = it as ViewGroup
                 (0..vp.childCount).forEachIndexed { index, item ->
                     val childAt = this.getChildAt(index)
                     if (childAt is ViewGroup) {
                         if (childAt is BaseViewComponent<*>) {
-                            val baseViewComponent = childAt as BaseViewComponent<*>
-                            baseViewComponent.init()
+                            childAt.init()
                         } else {
                             initViewComponent(childAt)
                         }

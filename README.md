@@ -7,6 +7,9 @@
 5、内部封装了具有网络请求和生命周期感知能力的自定义组合View，针对单页面多接口场景比较实用，目前已在生产项目中运用2年多时间，具体可见项目中BaseVBViewComponent；
 内部可以根据使用爱好选择Viewbinding还是DataBinding，都在基类做了对应集成，viewmodel同时也可以按自己喜好是否使用koin注入对应View层
 
+## 项目架构图
+<img src="https://s2.loli.net/2023/04/12/uRdS51WNI4UlHj7.png" width="25%">
+
 ## 其他一些学习练手的项目 <br>
 
 **Android组件化项目初始化工具**ApplicationInit链接(gradle-plugin+注解APT+ASM)：https://github.com/WinWang/ApplicationInit <br>
