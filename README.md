@@ -8,7 +8,7 @@
 内部可以根据使用爱好选择Viewbinding还是DataBinding，都在基类做了对应集成，viewmodel同时也可以按自己喜好是否使用koin注入对应View层
 
 ## 项目架构图
-<img src="https://s2.loli.net/2025/06/30/1X4NrLxV7O6YBRz.png" width="80%">
+<img src="https://s2.loli.net/2025/06/30/1X4NrLxV7O6YBRz.png" width="100%">
 
 ## 其他一些学习练手的项目 <br>
 
